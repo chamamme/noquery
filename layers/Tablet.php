@@ -1,5 +1,5 @@
 <?php
-namespace  ODB;
+namespace  Layers;
 /**
  * User: Klaus
  * Date: 9/18/2017
@@ -125,6 +125,31 @@ class Tablet
         $this->offset = intval($offset);
     }
 
+    public function update(array $args){
 
+//        $columns_array = array_keys($args);
+//        $values_array = array_values($args);
+//        #implode to strings
+//        $columns = implode(",",$columns_array);
+        $values = [];
+        foreach ($args as $key=>$value){
+            $values[] = "{$key}='{$value}'";
+        }
 
+        $values = implode(",",$values);
+
+        $this->sql = "UPDATE {$this->table} SET {$values} ";
+
+        return $this;
+    }
+
+    /**
+     * Executes
+     * @return mixed
+     */
+    public function go(){
+        $this->prepared = $this->db->prepare($this->sql);
+        $this->result = $this->db->execute($this->prepared,$this->params);
+        return $this->result;
+    }
 }

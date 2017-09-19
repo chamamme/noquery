@@ -1,22 +1,13 @@
 <?php
-use ODB\Tablet;
+require "bootstrap.php";
 
-require "vendor/autoload.php";
-$config = [
-    'driver' => 'mysqli',
-    'server' => "localhost",
-    'username' => "root",
-    'password' => "",
-    'port' => "3306",
-    'database' => "omvc",
-    'debug' => true
-];
-
-$tablet = new Tablet($config);
-
+//$result = $tablet->table("users")
+//                    ->select(["name"])
+//                    ->where(["name = 'test'"])
+//                    ->get(2,4);
 $result = $tablet->table("users")
-                    ->select(["name"])
-                    ->where(["name = 'test'"])
-                    ->get(2,4);
+                    ->update(["name"=>"Test"])
+                    ->where(["name = 'hello'"])
+                    ->go();
 
 var_dump ($result);
