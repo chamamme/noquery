@@ -1,6 +1,6 @@
 {
   "name": "chamamme/orcons-db",
-  "description": "A database class to improve on Orcons Systems database structure",
+  "description": "A database layer over ADODB which  minimises the use of raw SQL codes with ADoDB",
   "authors": [
     {
       "name": "Andrew Chamamme",
