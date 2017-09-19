@@ -1,0 +1,22 @@
+{
+  "name": "chamamme/orcons-db",
+  "description": "A database class to improve on Orcons Systems database structure",
+  "authors": [
+    {
+      "name": "Andrew Chamamme",
+      "email": "andrew.chamamme@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "keywords" : [ "database","orcons", "abstraction", "layer", "library", "php" ],
+  "require": {
+    "php": "^7.0",
+    "adodb/adodb-php": "5.20.9"
+  },
+
+  "autoload": {
+    "classmap":[
+      "./"
+    ]
+  }
+}
