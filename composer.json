@@ -1,6 +1,7 @@
 {
   "name": "chamamme/orcons-db",
   "description": "A database layer over ADODB which is aimed at code beautification by minimizing the use of raw SQL in codes",
+  "version":"1.0",
   "authors": [
     {
       "name": "Andrew Chamamme",
