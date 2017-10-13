@@ -23,6 +23,7 @@ class Tablet
     {
         $this->init($config);
     }
+
     public static function getInstance ()
     {
         if (self::$_instance === null) {
@@ -192,8 +193,33 @@ class Tablet
         $this->sql = $sql;
         return $this;
     }
+
+
     /**
-     * Adds WHERE IN condition to the query
+     * Adds WHERE NOT IN condition to the query
+     * @param string $column
+     * @param array $conditions
+     * @return $this
+     */
+    public  function whereNotIn (string $column,array $conditions) {
+        $value = implode("','",$conditions);
+        $value ="'{$value}'";
+        $conditions =" {$column} NOT IN ({$value})";
+//        $conditions = implode(' AND ',$array);
+        $this->where = $conditions;
+        #Check if sql contains WHERE already
+        $contains_where = stripos($this->sql," WHERE ");
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." AND {$conditions}";
+        }
+        $this->sql = $sql;
+
+        return $this;
+    }
+    /**
+     * Adds WHERE BETWEEN condition to the query
      * EG ->whereBetween('age',[18,25])
      * @param array $conditions
      * @return $this
@@ -203,6 +229,29 @@ class Tablet
         $value = implode(" AND ",$conditions);
 //            $value ="'{$value}'";
         $conditions =" {$column} BETWEEN {$value} ";
+//        $conditions = implode(' AND ',$array);
+        $this->where = $conditions;
+        #Check if sql contains WHERE already
+        $contains_where = stripos($this->sql," WHERE ");
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." AND {$conditions}";
+        }
+        $this->sql = $sql;
+
+        return $this;
+    }    /**
+     * Adds WHERE BETWEEN condition to the query
+     * EG ->whereBetween('age',[18,25])
+     * @param array $conditions
+     * @return $this
+     */
+    public  function wherenNotBetween ($column,array $conditions) {
+
+        $value = implode(" AND ",$conditions);
+//            $value ="'{$value}'";
+        $conditions =" {$column} NOT BETWEEN {$value} ";
 //        $conditions = implode(' AND ',$array);
         $this->where = $conditions;
         #Check if sql contains WHERE already
