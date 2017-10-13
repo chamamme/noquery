@@ -1,7 +1,6 @@
 {
   "name": "chamamme/orcons-db",
   "description": "A database layer over ADODB which is aimed at code beautification by minimizing the use of raw SQL in codes",
-  "version":"1.0",
   "authors": [
     {
       "name": "Andrew Chamamme",
@@ -14,7 +13,11 @@
     "php": "^7.0",
     "adodb/adodb-php": "5.20.9"
   },
-
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
   "autoload": {
     "classmap":[
       "./"
