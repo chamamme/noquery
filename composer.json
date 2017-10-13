@@ -8,6 +8,7 @@
       "role": "Developer"
     }
   ],
+  "license": "MIT",
   "keywords" : [ "database","adodb","orcons", "abstraction", "layer", "library", "php" ],
   "require": {
     "php": "^7.0",
