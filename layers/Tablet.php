@@ -197,4 +197,7 @@ class Tablet
         $this->result = $this->db->execute($this->prepared,$this->params);
         return $this->result;
     }
+    public function toSql(){
+        return $this->sql;
+    }
 }
