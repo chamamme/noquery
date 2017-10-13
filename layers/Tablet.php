@@ -136,6 +136,30 @@ class Tablet
 
         return $this;
     }
+    /**
+     * Adds OR WHERE condition to the query
+     * @param array $conditions
+     * @return $this
+     */
+    public  function orWhere (array $conditions) {
+        #Ceheck if there is where already in the sql statement;
+        if($conditions){
+            $contains_where = stripos($this->sql," WHERE ");
+            $conditions = implode(' OR ',$conditions);
+//            die($conditions);
+            $this->where = $conditions;
+        }else{
+            throw new Exception("Conditions variable must be  set and must be an array");
+        }
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." OR {$conditions}";
+        }
+        $this->sql = $sql;
+
+        return $this;
+    }
 
     /**
      * Adds WHERE IN condition to the query
@@ -155,7 +179,7 @@ class Tablet
             }
 
             $conditions = implode(' AND ',$array);
-//            die($conditions);
+
             $this->where = $conditions;
         }else{
             throw new Exception("Conditions variable must be  set and must be an array");
@@ -164,6 +188,37 @@ class Tablet
             $sql =$this->sql." WHERE {$conditions}";
         }else{
             $sql =$this->sql." AND {$conditions}";
+        }
+        $this->sql = $sql;
+        return $this;
+    }
+    /**
+     * Adds WHERE IN condition to the query
+     * @param array $conditions
+     * @return $this
+     */
+    public  function orWhereIn (array $conditions) {
+        $contains_where = stripos($this->sql," WHERE ");
+        if($conditions){
+            $array=[];
+            foreach ($conditions as $column => $value){
+                if(is_array($value)){
+                    $value = implode("','",$value);
+                }
+                $value ="'{$value}'";
+                $array[] =" {$column} IN ({$value}) ";
+            }
+
+            $conditions = implode(' OR ',$array);
+
+            $this->where = $conditions;
+        }else{
+            throw new Exception("Conditions variable must be  set and must be an array");
+        }
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." OR {$conditions}";
         }
         $this->sql = $sql;
         return $this;
