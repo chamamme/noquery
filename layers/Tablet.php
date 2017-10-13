@@ -59,11 +59,42 @@ class Tablet
 
     }
 
+
     public function table ($table){
         $this->table = $table;
         return $this;
     }
 
+    /**
+     * Inserts entities into db
+     * @param array $value
+     * @return mixed
+     */
+    public function insert(array $value){
+        $columns = array_keys($value);
+        $columns = implode(",",$columns);
+
+        $values = array_values($value);
+        $placeholders = array_map(function($val){
+                return " ? ";
+        },$values);
+
+        $placeholders = implode(",",$placeholders);
+//        die(var_dump($values));
+        $this->sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$placeholders})";
+        $prepared = $this->db->prepare($this->sql);
+
+        return $this->sql = $this->db->execute($prepared,$values);
+
+    }
+
+    /**
+     * RAW sql
+     */
+    public function raw($statement){
+        $prepared = $this->sql =  $this->db->prepare($statement);
+        return $this->db->execute($prepared);
+    }
     /**
      * Sets the select query
      * @param array $columns
@@ -170,6 +201,11 @@ class Tablet
         $this->offset = intval($offset);
     }
 
+    /**
+     *
+     * @param array $args
+     * @return $this
+     */
     public function update(array $args){
 
 //        $columns_array = array_keys($args);
@@ -197,7 +233,13 @@ class Tablet
         $this->result = $this->db->execute($this->prepared,$this->params);
         return $this->result;
     }
+
+    /**
+     * Return the final sql statements
+     * @return mixed
+     */
     public function toSql(){
         return $this->sql;
     }
+
 }
