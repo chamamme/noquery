@@ -194,6 +194,30 @@ class Tablet
     }
     /**
      * Adds WHERE IN condition to the query
+     * EG ->whereBetween('age',[18,25])
+     * @param array $conditions
+     * @return $this
+     */
+    public  function whereBetween ($column,array $conditions) {
+
+        $value = implode(" AND ",$conditions);
+//            $value ="'{$value}'";
+        $conditions =" {$column} BETWEEN {$value} ";
+//        $conditions = implode(' AND ',$array);
+        $this->where = $conditions;
+        #Check if sql contains WHERE already
+        $contains_where = stripos($this->sql," WHERE ");
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." AND {$conditions}";
+        }
+        $this->sql = $sql;
+
+        return $this;
+    }
+    /**
+     * Adds WHERE IN condition to the query
      * @param array $conditions
      * @return $this
      */
