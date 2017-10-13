@@ -4,6 +4,7 @@ namespace  Layers;
  * User: Klaus
  * Date: 9/18/2017
  * Time: 1:55 PM
+ * @property string where
  */
 class Tablet
 {
@@ -11,9 +12,9 @@ class Tablet
     private $db;
     private static $_instance;
     private  $sql;
-    public  $table;
-    public  $limit;
-    public  $offset;
+    private  $table;
+    private  $limit;
+    private  $offset;
     private  $prepared;
     private  $result;
     private  $params = [];
@@ -80,15 +81,59 @@ class Tablet
         return $this;
     }
 
+    /**
+     * Adds WHERE condition to the query
+     * @param array $conditions
+     * @return $this
+     */
     public  function where (array $conditions) {
-
+        #Ceheck if there is where already in the sql statement;
         if($conditions){
+            $contains_where = stripos($this->sql," WHERE ");
             $conditions = implode(' AND ',$conditions);
+//            die($conditions);
+            $this->where = $conditions;
         }else{
             throw new Exception("Conditions variable must be  set and must be an array");
         }
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." AND {$conditions}";
+        }
+        $this->sql = $sql;
 
-        $sql =$this->sql." WHERE {$conditions}";
+        return $this;
+    }
+
+    /**
+     * Adds WHERE IN condition to the query
+     * @param array $conditions
+     * @return $this
+     */
+    public  function whereIn (array $conditions) {
+        $contains_where = stripos($this->sql," WHERE ");
+        if($conditions){
+            $array=[];
+            foreach ($conditions as $column => $value){
+                if(is_array($value)){
+                    $value = implode("','",$value);
+                }
+                $value ="'{$value}'";
+                $array[] =" {$column} IN ({$value}) ";
+            }
+
+            $conditions = implode(' AND ',$array);
+//            die($conditions);
+            $this->where = $conditions;
+        }else{
+            throw new Exception("Conditions variable must be  set and must be an array");
+        }
+        if($contains_where == false){
+            $sql =$this->sql." WHERE {$conditions}";
+        }else{
+            $sql =$this->sql." AND {$conditions}";
+        }
         $this->sql = $sql;
         return $this;
     }

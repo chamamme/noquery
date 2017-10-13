@@ -8,7 +8,7 @@
       "role": "Developer"
     }
   ],
-  "keywords" : [ "database","orcons", "abstraction", "layer", "library", "php" ],
+  "keywords" : [ "database","adodb","orcons", "abstraction", "layer", "library", "php" ],
   "require": {
     "php": "^7.0",
     "adodb/adodb-php": "5.20.9"
