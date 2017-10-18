@@ -365,6 +365,15 @@ class Tablet
         $this->result = $this->db->execute($this->prepared,$this->params);
         return $this->result;
     }
+    /**
+     * Executes
+     * @return mixed
+     */
+    public function run(){
+        $this->prepared = $this->db->prepare($this->sql);
+        $this->result = $this->db->execute($this->prepared,$this->params);
+        return $this->result;
+    }
 
     /**
      * Return the final sql statements
