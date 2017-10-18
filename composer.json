@@ -20,8 +20,8 @@
     }
   },
   "autoload": {
-    "classmap":[
-      "./"
-    ]
+    "psr-4":{
+      "Orcons\\" : ""
+    }
   }
 }
