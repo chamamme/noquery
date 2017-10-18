@@ -1,5 +1,5 @@
 <?php
-namespace  Layers;
+namespace  Orcons\Layers;
 /**
  * User: Klaus
  * Date: 9/18/2017
@@ -9,7 +9,7 @@ namespace  Layers;
 class Tablet
 {
 
-    private $db;
+    public $db;
     private static $_instance;
     private  $sql;
     private  $table;
@@ -19,9 +19,13 @@ class Tablet
     private  $result;
     private  $params = [];
 
-    public function __construct($config = null)
+    public function __construct($config = null,$is_ado = false)
     {
-        $this->init($config);
+        if($is_ado){
+            $this->db = $config;
+        }else{
+            $this->init($config);
+        }
     }
 
     public static function getInstance ()
