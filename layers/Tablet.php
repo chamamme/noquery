@@ -379,7 +379,7 @@ class Tablet
      * Executes
      * @return mixed
      */
-    public function getOne(){
+    public function getSingle(){
         $this->prepared = $this->db->prepare($this->sql);
         $result = $this->db->execute($this->prepared,$this->params);
         $this->result = $result;
