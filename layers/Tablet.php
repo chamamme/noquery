@@ -381,7 +381,7 @@ class Tablet
      */
     public function getSingle(){
         $this->prepared = $this->db->prepare($this->sql);
-        $result = $this->db->execute($this->prepared,$this->params);
+        $result = $this->db->getAll($this->prepared,$this->params);
         $this->result = $result;
         return $result[0];
     }
