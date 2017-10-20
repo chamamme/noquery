@@ -319,12 +319,8 @@ class Tablet
         }
 
         $this->prepared = $this->db->prepare($this->sql);
-        $result = $this->db->getAll($this->prepared,$this->params);
-        if(1<=count($result)){
-            $result= $result[0];
-        }
-        $this->result = $result;
-        return $result;
+        $this->result = $this->db->getAll($this->prepared,$this->params);
+        return $this->result;
     }
 
     /**
@@ -366,12 +362,8 @@ class Tablet
      */
     public function go(){
         $this->prepared = $this->db->prepare($this->sql);
-         $result = $this->db->execute($this->prepared,$this->params);
-        if(1<=count($result)){
-            $result= $result[0];
-        }
-        $this->result = $result;
-        return $result;
+        $this->result = $this->db->execute($this->prepared,$this->params);
+        return $this->result;
     }
     /**
      * Executes
@@ -379,12 +371,19 @@ class Tablet
      */
     public function run(){
         $this->prepared = $this->db->prepare($this->sql);
+        $this->result = $this->db->execute($this->prepared,$this->params);
+        return $this->result;
+    }
+
+    /**
+     * Executes
+     * @return mixed
+     */
+    public function getOne(){
+        $this->prepared = $this->db->prepare($this->sql);
         $result = $this->db->execute($this->prepared,$this->params);
-        if(1<=count($result)){
-            $result= $result[0];
-        }
         $this->result = $result;
-        return $result;
+        return $result[0];
     }
 
     /**
