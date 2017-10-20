@@ -319,8 +319,12 @@ class Tablet
         }
 
         $this->prepared = $this->db->prepare($this->sql);
-        $this->result = $this->db->getAll($this->prepared,$this->params);
-        return $this->result;
+        $result = $this->db->getAll($this->prepared,$this->params);
+        if(1<=count($result)){
+            $result= $result[0];
+        }
+        $this->result = $result;
+        return $result;
     }
 
     /**
@@ -362,8 +366,12 @@ class Tablet
      */
     public function go(){
         $this->prepared = $this->db->prepare($this->sql);
-        $this->result = $this->db->execute($this->prepared,$this->params);
-        return $this->result;
+         $result = $this->db->execute($this->prepared,$this->params);
+        if(1<=count($result)){
+            $result= $result[0];
+        }
+        $this->result = $result;
+        return $result;
     }
     /**
      * Executes
@@ -371,8 +379,12 @@ class Tablet
      */
     public function run(){
         $this->prepared = $this->db->prepare($this->sql);
-        $this->result = $this->db->execute($this->prepared,$this->params);
-        return $this->result;
+        $result = $this->db->execute($this->prepared,$this->params);
+        if(1<=count($result)){
+            $result= $result[0];
+        }
+        $this->result = $result;
+        return $result;
     }
 
     /**
