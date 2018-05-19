@@ -1,6 +1,6 @@
 {
   "name": "chamamme/orcons-db",
-  "description": "A database layer over ADODB which is aimed at code beautification by minimizing the use of raw SQL in codes",
+  "description": "A database query builder for  ADODB which is aimed at code beautification by minimizing the use of raw SQL in codes",
   "authors": [
     {
       "name": "Andrew Chamamme",
@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "keywords" : [ "database","adodb","orcons", "abstraction", "layer", "library", "php" ],
+  "keywords" : [ "database","adodb","orcons", "abstraction", "layer", "library", "php","query builder" ],
   "require": {
     "php": "^7.0",
     "adodb/adodb-php": "5.20.9"
