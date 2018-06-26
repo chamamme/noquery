@@ -6,7 +6,7 @@ Orcons-db is a query builder for ADODB library. It is aimed at making database i
 ## Configuration
 	orcons-db requires a configuration array. A typical configuration looks like;
 	> $config = [
-	    'driver' 	=> 'mysqli',
+	    	'driver' 	=> 'mysqli',
 
 		'server' 	=> "localhost",
 
