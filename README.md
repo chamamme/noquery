@@ -8,7 +8,7 @@ Orcons-db is a query builder for ADODB library. It is aimed at making database i
 ## Configuration
 	orcons-db requires a configuration array. A typical configuration looks like;
 	> $config = [
-	    	'driver' 	=> 'mysqli',
+	    'driver' 	=> 'mysqli',
 
 		'server' 	=> "localhost",
 
@@ -45,5 +45,30 @@ Now we are ready to interact with our database.
 |<code> run </code> |  | Executes the sql statement  | <code>  run() </code> |
 |<code> toSql </code> |  | returns the final sql statment  | <code>  toSql() </code> |
 
+### Samples
+ ``` 
+$config = [
+	    'driver' 	=> 'mysqli',
+		'server' 	=> "localhost",
+		'username' 	=> "root",
+		'password' 	=> "",
+		'port' 		=> "3306",
+		'database' 	=> "omvc",
+		'debug' 	=> true
+	];
+	
+	$db = new Tablet( $config ) 
+	
+	#select query
+	$db->table('users')
+		->select(['name','gender','age'])
+		->get()
 		
+	#update statment
+	$db->table('users')
+		  ->update(['name'=>'Chamamme'])
+		  ->where(["id = 5","gender ='male'"])
+		  ->go()
+		  
+```
 	
