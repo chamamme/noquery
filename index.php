@@ -1,13 +1,20 @@
 <?php
-require "bootstrap.php";
+require "vendor/autoload.php";
 
-//$result = $tablet->table("users")
-//                    ->select(["name"])
-//                    ->where(["name = 'test'"])
-//                    ->get(2,4);
-$result = $tablet->table("users")
-                    ->update(["name"=>"Test"])
-                    ->where(["name = 'hello'"])
-                    ->go();
+use Orcons\Layers\Tablet;
 
-var_dump ($result);
+$config = require "config.php";
+
+$db = new Tablet($config);
+
+#select query
+$db->table('users')
+   	->select(['name','gender','age'])
+   	->get()
+   	
+#update statement
+$db->table('users')
+   	  ->update(['name'=>'Chamamme'])
+   	  ->where(["id = 5","gender ='male'"])
+   	  ->go()
+   	  

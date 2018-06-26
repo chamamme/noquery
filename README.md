@@ -6,9 +6,12 @@ Orcons-db is a query builder for ADODB library. It is aimed at making database i
  	 >  composer install orcons-db 
 	 
 ## Configuration
-	orcons-db requires a configuration array. A typical configuration looks like;
-	> $config = [
-	    'driver' 	=> 'mysqli',
+	orcons-db requires a configuration array. A typical configuration looks like
+
+```php
+	
+	 $config = [
+	    	'driver' 	=> 'mysqli',
 
 		'server' 	=> "localhost",
 
@@ -23,10 +26,12 @@ Orcons-db is a query builder for ADODB library. It is aimed at making database i
 		'debug' 	=> true
 
 	];
-
+```
 ## Usage 
 It all starts with an instance of  Tablet class which requires a configuration array variable.  
-<code> $db = new Tablet( $config ) </code>
+```php  
+$db = new  Orcons\Layers\Tablet( $config ) 
+```
 Now we are ready to interact with our database. 
 
 ## Methods 
@@ -44,11 +49,13 @@ Now we are ready to interact with our database.
 |<code> get </code> | limit (int), offset (int)| Executes the sql statement  | <code>  get()</code> or <code> get(0,10) </code>|
 |<code> run </code> |  | Executes the sql statement  | <code>  run() </code> |
 |<code> toSql </code> |  | returns the final sql statment  | <code>  toSql() </code> |
-
-### Samples
- ``` 
+### Sample
+ ```php 
+ 
+ use Orcons\Layers\Tablet;
+ 
 $config = [
-	    'driver' 	=> 'mysqli',
+	    'driver' 	=> "mysqli",
 		'server' 	=> "localhost",
 		'username' 	=> "root",
 		'password' 	=> "",
@@ -64,7 +71,7 @@ $config = [
 		->select(['name','gender','age'])
 		->get()
 		
-	#update statment
+	#update statement
 	$db->table('users')
 		  ->update(['name'=>'Chamamme'])
 		  ->where(["id = 5","gender ='male'"])
