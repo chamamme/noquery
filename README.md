@@ -3,12 +3,13 @@
 # Orcons-db 
 Orcons-db is a query builder for ADODB library. It is aimed at making database interactions easier with less codes.
 ## Installation
- 	 > composer install orcons-db 
+ 	 >  composer install orcons-db 
 	 
 ## Configuration
-	orcons-db requires a configuration array. A typical configuration looks like;
+	orcons-db requires a configuration array. A typical configuration looks like
+
+```php
 	
-	```php 
 	 $config = [
 	    'driver' 	=> 'mysqli',
 
