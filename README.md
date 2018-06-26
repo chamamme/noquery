@@ -1,3 +1,5 @@
+
+
 # Orcons-db 
 Orcons-db is a query builder for ADODB library. It is aimed at making database interactions easier with less codes.
 ## Installation
@@ -28,8 +30,12 @@ It all starts with an instance of  Tablet class which requires a configuration a
 Now we are ready to interact with our database. 
 
 ## Methods 
-|Name  |Params |Description | Example |
+|Name  |Params (Type) |Description | Example |
 |------- |--------- |------ |------|
 |<code> table </code> |  <code> table  </code>(string) | Tells orcons-db the database table to interact with. | table('users')  |
 |select|columns (array) | Performs a select query. | <code> select(['name','age']) </code>|
-|<code> where </code>
+|<code> where </code> | conditions (array)| Adds a <code> where </code> condition to sql statement | <code> where(['name'=>'Chamamme'])</code>|
+|<code> orWhere </code> | conditions (array)| Adds an <code> OR </code> condition to sql statement | <code> orWhere(['age'=>25])</code>|
+
+		
+	
