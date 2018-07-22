@@ -35,6 +35,7 @@ $db = new  Orcons\Layers\Tablet( $config )
 Now we are ready to interact with our database. 
 
 ## Methods 
+
 |Name  |Params (Type) |Description | Example |
 |------- |--------- |------ |------|
 |<code> table </code> |  <code> table  </code>(string) | Tells orcons-db the database table to interact with. | table('users')  |
