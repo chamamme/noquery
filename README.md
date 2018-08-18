@@ -5,7 +5,7 @@
  NoQuery currently supports MySQL, Firebird-Interbase, PostgreSQL, SQLite3, Oracle, Microsoft SQL Server, Foxpro ODBC, Access ODBC, 
  Informix, DB2, Sybase, Sybase SQL Anywhere, generic ODBC and Microsoft's ADO due its leverage on ADODB.
 ## Installation
- 	 >  composer install noquery 
+ 	 > composer require chamamme/noquery
 	 
 ## Configuration
 	NoQuery requires a configuration array. A typical configuration looks like

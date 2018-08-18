@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "keywords" : [ "noquery", "database","adodb","orcons", "abstraction", "layer", "library", "php","query builder","MySQL", "Firebird" , "Interbase", "PostgreSQL", "SQLite3", "Oracle", "Microsoft SQL Server", "Foxpro ODBC", "Access ODBC", "Informix", "DB2", "Sybase", "Sybase SQL Anywhere", "generic ODBC", "Microsoft ADO" ],
+  "keywords" : [ "noquery", "database","adodb", "PostgreSQL", "SQLite3", "Oracle", "Microsoft SQL Server", "Foxpro ODBC","orcons", "abstraction", "layer", "library", "php","query builder","MySQL", "Firebird" , "Interbase", "Access ODBC", "Informix", "DB2", "Sybase", "Sybase SQL Anywhere", "generic ODBC", "Microsoft ADO" ],
   "require": {
     "php": "^7.0",
     "adodb/adodb-php": "5.20.9"
