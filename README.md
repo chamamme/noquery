@@ -1,17 +1,19 @@
 
 
-# Orcons-db 
-Orcons-db is a query builder for ADODB library. It is aimed at making database interactions easier with less codes.
+# NoQuery 
+ NoQuery is a php query builder running on ADODB library. It is aimed at making database interactions easier with less codes.
+ NoQuery currently supports MySQL, Firebird-Interbase, PostgreSQL, SQLite3, Oracle, Microsoft SQL Server, Foxpro ODBC, Access ODBC, 
+ Informix, DB2, Sybase, Sybase SQL Anywhere, generic ODBC and Microsoft's ADO due its leverage on ADODB.
 ## Installation
- 	 >  composer install orcons-db 
+ 	 >  composer install noquery 
 	 
 ## Configuration
-	orcons-db requires a configuration array. A typical configuration looks like
+	NoQuery requires a configuration array. A typical configuration looks like
 
 ```php
 	
 	 $config = [
-	    	'driver' 	=> 'mysqli',
+	    'driver' 	=> 'mysqli',
 
 		'server' 	=> "localhost",
 
@@ -30,7 +32,7 @@ Orcons-db is a query builder for ADODB library. It is aimed at making database i
 ## Usage 
 It all starts with an instance of  Tablet class which requires a configuration array variable.  
 ```php  
-$db = new  Orcons\Layers\Tablet( $config ) 
+$db = new  NoQuery\Builder( $config ) 
 ```
 Now we are ready to interact with our database. 
 
@@ -53,7 +55,7 @@ Now we are ready to interact with our database.
 ### Sample
  ```php 
  
- use Orcons\Layers\Tablet;
+ use NoQuery\Builder;
  
 $config = [
 	    'driver' 	=> "mysqli",
@@ -65,18 +67,18 @@ $config = [
 		'debug' 	=> true
 	];
 	
-	$db = new Tablet( $config ) 
+	$db = new Builder( $config ) 
 	
 	#select query
 	$db->table('users')
 		->select(['name','gender','age'])
-		->get()
+		->get();
 		
 	#update statement
 	$db->table('users')
 		  ->update(['name'=>'Chamamme'])
 		  ->where(["id = 5","gender ='male'"])
-		  ->go()
+		  ->go();
 		  
 ```
 	

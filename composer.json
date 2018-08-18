@@ -1,6 +1,6 @@
 {
-  "name": "chamamme/orcons-db",
-  "description": "A database query builder for  ADODB which is aimed at code beautification by minimizing the use of raw SQL in codes",
+  "name": "chamamme/noquery",
+  "description": "A database query builder aimed at code beautification by minimizing the use of raw SQL in codes. NoQuery currently supports MySQL, Firebird & Interbase, PostgreSQL, SQLite3, Oracle, Microsoft SQL Server, Foxpro ODBC, Access ODBC, Informix, DB2, Sybase, Sybase SQL Anywhere, generic ODBC and Microsoft's ADO due to its leverage on ADODB",
   "authors": [
     {
       "name": "Andrew Chamamme",
@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "keywords" : [ "database","adodb","orcons", "abstraction", "layer", "library", "php","query builder" ],
+  "keywords" : [ "noquery", "database","adodb","orcons", "abstraction", "layer", "library", "php","query builder","MySQL", "Firebird" , "Interbase", "PostgreSQL", "SQLite3", "Oracle", "Microsoft SQL Server", "Foxpro ODBC", "Access ODBC", "Informix", "DB2", "Sybase", "Sybase SQL Anywhere", "generic ODBC", "Microsoft ADO" ],
   "require": {
     "php": "^7.0",
     "adodb/adodb-php": "5.20.9"
@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4":{
-      "Orcons\\" : ""
+      "NoQuery\\" : ""
     }
   }
 }

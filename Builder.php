@@ -1,12 +1,12 @@
 <?php
-namespace  Orcons\Layers;
+namespace  NoQuery;
 /**
  * User: Klaus
  * Date: 9/18/2017
  * Time: 1:55 PM
  * @property string where
  */
-class Tablet
+class Builder
 {
 
     public $db;
@@ -123,8 +123,9 @@ class Tablet
      * @return $this
      */
     public  function where (array $conditions) {
-        #Ceheck if there is where already in the sql statement;
+        #@TODO Allow string conditions
         if($conditions){
+            #Check if there is where already in the sql statement;
             $contains_where = stripos($this->sql," WHERE ");
             $conditions = implode(' AND ',$conditions);
 //            die($conditions);
@@ -133,7 +134,7 @@ class Tablet
             throw new Exception("Conditions variable must be  set and must be an array");
         }
         if($contains_where == false){
-            $sql =$this->sql." WHERE {$conditions}";
+            $sql = $this->sql." WHERE {$conditions}";
         }else{
             $sql =$this->sql." AND {$conditions}";
         }
