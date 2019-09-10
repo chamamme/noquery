@@ -23,9 +23,9 @@
 
 		'port' 		=> "3306",
 
-		'database' 	=> "omvc",
+		'database' 	=> "test_db",
 
-		'debug' 	=> true
+		'debug' 	=> false
 
 	];
 ```
