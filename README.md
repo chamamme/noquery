@@ -55,6 +55,8 @@ Now we are ready to interact with our database.
 ### Sample
  ```php 
  
+ require("vendor/autoload.php"); #change to the actual path of your composer autoload.php file
+ 
  use NoQuery\Builder;
  
 $config = [
@@ -63,11 +65,11 @@ $config = [
 		'username' 	=> "root",
 		'password' 	=> "",
 		'port' 		=> "3306",
-		'database' 	=> "omvc",
+		'database' 	=> "test_db",
 		'debug' 	=> true
 	];
 	
-	$db = new Builder( $config ) 
+	$db = new Builder( $config ) ; #Instantiate the Builder class
 	
 	#select query
 	$db->table('users')
