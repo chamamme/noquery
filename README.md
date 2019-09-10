@@ -66,7 +66,7 @@ $config = [
 		'password' 	=> "",
 		'port' 		=> "3306",
 		'database' 	=> "test_db",
-		'debug' 	=> true
+		'debug' 	=> false
 	];
 	
 	$db = new Builder( $config ) ; #Instantiate the Builder class
